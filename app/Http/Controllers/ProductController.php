@@ -39,11 +39,11 @@ class ProductController extends Controller
         ]);
     }
 
-    public function show(string $gtin)
+    public function show(Product $product)
     {
         return view('admin.products.show', [
             'product' => Product::with(['category', 'company', 'reviews.user'])
-                ->where('gtin', $gtin)
+                ->where('gtin', $product->gtin)
                 ->firstOrFail()
         ]);
     }
